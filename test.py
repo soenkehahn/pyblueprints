@@ -47,6 +47,14 @@ class RequestServerTestSuite(unittest.TestCase):
         graph.removeEdge(newEdge)
         self.assertIsNone(graph.getEdge(_id))
 
+    def testClear(self):
+        graph = Neo4jGraph(HOST)
+        v = graph.addVertex()
+        v_id = v.getId()
+        self.assertIsNotNone(graph.getVertex(v_id))
+        graph.clear()
+        self.assertIsNone(graph.getVertex(v_id))
+
     def testVertexMethods(self):
         graph= Neo4jGraph(HOST)
         v1 = graph.addVertex()
